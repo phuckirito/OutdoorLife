@@ -43,9 +43,9 @@
 
                 </div>
             </div>
-            <div class="col-md-6 px-0 d-none d-md-block" style="margin-top: 200px; margin-left:-150px">
-                <img src="img/campingultra.jpg"
-                     alt="Login image" class="w-100 h-200" style="object-fit: cover; object-position: left;">
+            <div class="col-sm-6 px-0 d-none d-sm-block">
+                <img src="img/camping.jpg"
+                     alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
             </div>
 
 
