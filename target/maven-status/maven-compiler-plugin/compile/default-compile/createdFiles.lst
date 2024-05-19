@@ -1,5 +1,5 @@
-dao\userDao.class
 controller\RegisterAcc.class
 dao\userDaoImpl.class
+dao\userDao.class
 model\user.class
 dao\DBContext.class
