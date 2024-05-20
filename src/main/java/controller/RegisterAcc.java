@@ -1,6 +1,5 @@
 package controller;
 
-import dao.userDaoImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -10,8 +9,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.user;
-import dao.userDao;
+import model.User;
+import dao.UserDAO;
+import dao.UserDaoImpl;
 
 @WebServlet(name = "RegisterAcc", urlPatterns = {"/registeracc"})
 public class RegisterAcc extends HttpServlet {
@@ -43,32 +43,39 @@ public class RegisterAcc extends HttpServlet {
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
         String agreed = request.getParameter("agreed");
-        System.out.println(firstName+" "+lastName);
         String errorMessage = null;
         String successMessage = null;
 
+        UserDaoImpl guestDao = new UserDaoImpl();
+
         if (agreed != null) {
-            // Tiếp tục với quá trình đăng ký
-            user guest = new user();
-            guest.setFirstName(firstName);
-            guest.setLastName(lastName);
-            guest.setEmail(email);
-            guest.setPhoneNumber(phone);
-            guest.setPasswordHash(password);
-            userDaoImpl guestDao = new userDaoImpl();
             try {
-                System.out.println(guestDao.getConnection());
+                // Check if the email already exists
+                boolean emailExists = guestDao.emailExists(email);
+                if (emailExists==true) {
+                    errorMessage = "Email is already registered. Please use a different email.";
+                } else {
+                    // Proceed with the registration process
+                    User guest = new User();
+                    guest.setFirstName(firstName);
+                    guest.setLastName(lastName);
+                    guest.setEmail(email);
+                    guest.setPhoneNumber(phone);
+                    guest.setPasswordHash(password);
+
+                    boolean status = guestDao.insertGuest(firstName, lastName, phone, email, password);
+                    if (status) {
+                        successMessage = "Registration successful!";
+                    } else {
+                        errorMessage = "An error occurred during registration.";
+                    }
+                }
             } catch (Exception ex) {
                 Logger.getLogger(RegisterAcc.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            boolean status = guestDao.insertGuest(firstName, lastName, phone, email, password);
-            if (status) {
-                successMessage = "Successful Register!";
-            } else {
-                errorMessage = "Error";
+                errorMessage = "An error occurred while checking email.";
             }
         } else {
-            errorMessage = "Please accept Terms of Service";
+            errorMessage = "Please accept the Terms of Service.";
         }
 
         request.setAttribute("errorMessage", errorMessage);

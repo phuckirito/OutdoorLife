@@ -24,7 +24,7 @@
                             <label for="floating Input">Last Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                             <label for="email">Email</label>
                         </div>
                         <div class="form-floating mb-3">
@@ -52,7 +52,7 @@
                                 <i class="fab fa-google me-2"></i> Sign in with Google
                             </button>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>

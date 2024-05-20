@@ -1,5 +1,6 @@
-dao\userDao.class
+dao\UserDaoImpl.class
 controller\RegisterAcc.class
-dao\userDaoImpl.class
-model\user.class
+controller\loginservlet.class
+dao\UserDAO.class
 dao\DBContext.class
+model\User.class
