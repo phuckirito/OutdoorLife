@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <nav class="navbar navbar-light bg-light navbar-expand-xl">
-                    <a href="index.html" class="navbar-brand ms-3">
+                    <a href="index.jsp" class="navbar-brand ms-3">
                         <h1 class="text-primary display-5">Outdoor-Life</h1>
                     </a>
                     <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

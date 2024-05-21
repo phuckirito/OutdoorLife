@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+//123
 
 
 public class DBContext {
@@ -16,7 +17,7 @@ public class DBContext {
         return DriverManager.getConnection(url, userID, password);
     }
     private final String serverName = "localhost";
-    private final String dbName = "test_swp";
+    private final String dbName = "users";
     private final String portNumber = "1433";
     private final String userID = "sa";
     private final String password = "123";
