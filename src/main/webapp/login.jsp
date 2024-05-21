@@ -38,7 +38,7 @@
                             <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign in</button>
                         </div>
 
-                        <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
+                        <p class="small mb-5 pb-lg-2"><a class="text-muted" href="forgotpass.jsp">Forgot password?</a></p>
                         <p>Don't have an account? <a href="Register.jsp" class="link-info">Register here</a></p>
 
 

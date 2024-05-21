@@ -72,8 +72,8 @@
                             <a href="index.jsp" class="nav-item nav-link active">Home</a>
                             <a href="about.html" class="nav-item nav-link">About</a>
                             <a href="service.html" class="nav-item nav-link">Services</a>
-                            <a href="campsite.html" class="nav-item nav-link">campsite</a>
-                            <a href="campinggear.html" class="nav-item nav-link">camping gear</a>
+                            <a href="campsite.html" class="nav-item nav-link">Campsite</a>
+                            <a href="campinggear.html" class="nav-item nav-link">Camping gear</a>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">

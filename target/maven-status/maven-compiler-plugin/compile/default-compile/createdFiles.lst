@@ -1,6 +1,9 @@
 dao\UserDaoImpl.class
+controller\ForgotPassword$1.class
+controller\NewPassword.class
 controller\RegisterAcc.class
 controller\loginservlet.class
 dao\UserDAO.class
+controller\ForgotPassword.class
 dao\DBContext.class
 model\User.class
