@@ -26,7 +26,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="css/style.css" tyle="text/css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
     </head>
 
     <body>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <nav class="navbar navbar-light bg-light navbar-expand-xl">
-                    <a href="index.jsp" class="navbar-brand ms-3">
+                    <a href="index.html" class="navbar-brand ms-3">
                         <h1 class="text-primary display-5">Outdoor-Life</h1>
                     </a>
                     <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -70,14 +70,14 @@
                     <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
                         <div class="navbar-nav ms-auto">
                             <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="service.html" class="nav-item nav-link">Services</a>
                             <a href="campsite.html" class="nav-item nav-link">campsite</a>
                             <a href="campinggear.html" class="nav-item nav-link">camping gear</a>
+                            <a href="service.html" class="nav-item nav-link">Order</a>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
+
                         </div>
                         <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                            <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
+                            <a href="" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
                         </div>
                     </div>
                 </nav>
@@ -251,7 +251,7 @@
                         <div class="service-item">
                             <img src="img/diahinh1.jpg" class="img-fluid w-100" alt="Image">
                             <div class="service-link">
-                                <a href="https://www.facebook.com/Phuc250703/   " class="h4 mb-0">River</a>
+                                <a href="river.html" class="h4 mb-0">River</a>
                             </div>
                         </div>
                         <p class="my-4">Campsites around the river. Make you have more and more the experience with your friends or family. Cool river bring you good relax
@@ -261,7 +261,7 @@
                         <div class="service-item">
                             <img src="img/diahinh2.jpg" class="img-fluid w-100" alt="Image">
                             <div class="service-link">
-                                <a href="#" class="h4 mb-0"> Beach</a>
+                                <a href="beach.html" class="h4 mb-0"> Beach</a>
                             </div>
                         </div>
                         <p class="my-4">A place where you can immerse yourself in the sea water. There are rich seafood and interesting entertainment services such as boating and beach volleyball
@@ -271,7 +271,7 @@
                         <div class="service-item">
                             <img src="img/diahinh3.jpg" class="img-fluid w-100" alt="Image">
                             <div class="service-link">
-                                <a href="#" class="h4 mb-0">Mountain</a>
+                                <a href="moutain.html" class="h4 mb-0">Mountain</a>
                             </div>
                         </div>
                         <p class="my-4">You can enjoy the atmosphere away from the city at an altitude of a few hundred meters. You can grill meat or organize parties among the mountains without worrying about being disturbed
@@ -443,7 +443,7 @@
                             <a href="https://www.facebook.com/Phuc250703/" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
                             <a href="https://www.facebook.com/Phuc250703/" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
                             <a href="https://www.facebook.com/Phuc250703/" class="btn-hover-color btn-square text-white me-2"><i class="fab fa-pinterest"></i></a>
-                            <a href="#https://www.facebook.com/Phuc250703/" class="btn-hover-color btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.facebook.com/Phuc250703/" class="btn-hover-color btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>

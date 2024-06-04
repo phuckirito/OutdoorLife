@@ -41,7 +41,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-       <link href="css/style.css" type="text/css" rel="stylesheet">
+        <link href="css/style.css" type="text/css" rel="stylesheet">
     </head>
 
     <body>
@@ -98,7 +98,7 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" href="UserProfile.jsp">Profile</a></li>
-                            <li><a class="dropdown-item" href="addtocard                                                                .jsp">Purchase Order</a></li>
+                            <li><a class="dropdown-item" href="addtocard.jsp">Order</a>                                                              
                             <li><a class="dropdown-item" href="index.jsp">Logout</a></li>
                         </ul>
                     </div>
