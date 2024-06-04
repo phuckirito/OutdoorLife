@@ -1,6 +1,10 @@
+C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\controller\ConfirmOtpResetPass.java
+C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\controller\ResetPasswordServlet.java
+C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\controller\SendOtpServlet.java
 C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\dao\UserDAO.java
-C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\controller\RegisterAcc.java
+C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\controller\VerifyCode.java
 C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\dao\UserDaoImpl.java
+C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\controller\RegisterAccountServlet.java
 C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\model\User.java
-C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\controller\loginservlet.java
+C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\controller\LoginServlet.java
 C:\Users\admin\Documents\NetBeansProjects\OutdoorLife\src\main\java\dao\DBContext.java
