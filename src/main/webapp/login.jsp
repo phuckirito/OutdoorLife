@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="login.css"/>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
 </head>
 <section class="vh-100">
     <div class="container-fluid">
