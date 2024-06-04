@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 import model.User;
 
 @WebServlet(name = "loginservlet", urlPatterns = {"/loginservlet"})
-public class loginservlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -41,23 +41,29 @@ public class loginservlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
+         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        HttpSession session = request.getSession();
-        User user = authenticateUser(email, password);
 
-        if (user != null) {
+        // Xác thực người dùng là quản trị viên
+        User user = authenticateUser(email, password, true);
+        if (user != null&& user.isAdmin()) {
+            HttpSession session = request.getSession();
             session.setAttribute("currentUser", user);
-            if (user.isAdmin()) {
-                response.sendRedirect("admin.jsp");
-            } else {
-                response.sendRedirect("user.jsp");
-            }
+            response.sendRedirect("admin.jsp");
+            return; // Kết thúc phương thức sau khi chuyển hướng
+        }
+
+        // Nếu không phải quản trị viên, tiếp tục xác thực như người dùng thông thường
+        user = authenticateUser(email, password, false);
+        if (user != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("currentUser", user);
+            response.sendRedirect("user.jsp");
         } else {
-            request.setAttribute("errorMessage", "Username or password may be wrong! Please login again");
+            request.setAttribute("errorMessage", "Tên đăng nhập hoặc mật khẩu có thể sai! Vui lòng đăng nhập lại");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-    }
+}
 
     @Override
     public String getServletInfo() {
@@ -79,18 +85,19 @@ public class loginservlet extends HttpServlet {
         return hexString.toString();
     }
 
-    private User authenticateUser(String email, String password) {
+      private User authenticateUser(String email, String password,boolean isAdmin) {
         UserDaoImpl userDAO = new UserDaoImpl();
         User user = userDAO.findByEmail(email);
-        System.out.println("User: " + user);
-        try {
-            String passwordHashed = hashPassword(password);
-            if (user != null && user.getPasswordHash().equals(passwordHashed)) {
-                return user;
+        if (user != null) {
+            try {
+                String passwordHashed = hashPassword(password);
+                if (user.getPasswordHash().equals(passwordHashed)) {
+                    return user;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
         }
         return null;
-
     }
 }
