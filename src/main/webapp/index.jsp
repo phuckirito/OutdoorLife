@@ -77,7 +77,7 @@
 
                         </div>
                         <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                            <a href="" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
+                            <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
                         </div>
                     </div>
                 </nav>
