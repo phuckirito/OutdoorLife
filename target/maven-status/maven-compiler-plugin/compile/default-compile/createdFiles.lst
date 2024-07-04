@@ -1,9 +1,10 @@
+controller\ResetPasswordServlet.class
+dao\UserDaoImpl$1.class
 dao\UserDaoImpl.class
-controller\ForgotPassword$1.class
-controller\NewPassword.class
 controller\RegisterAcc.class
 controller\loginservlet.class
 dao\UserDAO.class
-controller\ForgotPassword.class
+controller\SendOtpServlet.class
+controller\VerifyCode.class
 dao\DBContext.class
 model\User.class

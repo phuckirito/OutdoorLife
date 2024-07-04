@@ -52,7 +52,7 @@
                         <div class="col-md-4">
                             <div class="topbar-icon d-flex align-items-center justify-content-end">
                                 <a href="https://www.facebook.com/Phuc250703/" class="btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.facebook.com/Phuc250703/" class="btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/Vietnguyen0303/" class="btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
                                 <a href="https://www.facebook.com/Phuc250703/" class="btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
                                 <a href="https://www.facebook.com/Phuc250703/" class="btn-square text-white me-2"><i class="fab fa-pinterest"></i></a>
                                 <a href="https://www.facebook.com/Phuc250703/" class="btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
@@ -69,12 +69,12 @@
                     </button>
                     <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
                         <div class="navbar-nav ms-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="service.html" class="nav-item nav-link">Services</a>
-                            <a href="campsite.html" class="nav-item nav-link">campsite</a>
-                            <a href="campinggear.html" class="nav-item nav-link">camping gear</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="index.jsp" class="nav-item nav-link active">Home</a>
+                            <a href="about.jsp" class="nav-item nav-link">About</a>
+                            <a href="service.jsp" class="nav-item nav-link">Services</a>
+                            <a href="campsite.jsp" class="nav-item nav-link">Campsite</a>
+                            <a href="campinggear.jsp" class="nav-item nav-link">Camping Gear</a>
+                            <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
                             <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>

@@ -1,48 +1,36 @@
-<%-- 
-    Document   : fogotpass
-    Created on : May 21, 2024, 2:23:27 AM
-    Author     : admin
---%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="header.jsp"></jsp:include>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<head>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="forgotpass.css"/>
-</head>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
-    <link rel="stylesheet" href="login.css">
-</head>
-<body>
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card w-50">
-            <div class="card-body">
-               <div class="logo-container mb-4">
-                    <img src="img/logo.jpg"
-                         alt="Login image" class="logo-circle">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card border-e shadow rounded-3" style="margin-top: 300px;">
+                    <div class="card-body p-4 p-sm-5">
+                        <h5 class="card-title text-center mb-5 fw-light fs-5">Forgot Password</h5>
+                        <form action="sendotp" method="post">
+                        <c:if test="${not empty errorMessage}">
+                            <p style="color:red">${errorMessage}</p>
+                        </c:if>
+                        <c:if test="${not empty successMessage}">
+                            <p style="color:green">${successMessage}</p>
+                        </c:if>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Send OTP</button>
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="login.jsp" class="link-info">Back to Login</a>
+                        </div>
+                    </form>
                 </div>
-                <h3 class="text-center mb-4">Forgot Password</h3>
-                <form>
-                    <div class="form-outline mb-4">
-                        <input type="email" id="email" class="form-control form-control-lg" placeholder=" " required>
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-info btn-lg btn-block">Reset Password</button>
-                    </div>
-                    <div class="text-center mt-3">
-                        <a href="login.jsp" class="link-info">Back to Login</a>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
-</body>
-</html>
-<jsp:include page="footer.jsp"></jsp:include>
+</div>
+
 
 
