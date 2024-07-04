@@ -52,7 +52,7 @@ public class LoginAlreadyServlet extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("currentUser", user);
-            response.sendRedirect("Cart.jsp");
+            response.sendRedirect("user.jsp");
         } else {
             request.setAttribute("errorMessage", "Tên đăng nhập hoặc mật khẩu có thể sai! Vui lòng đăng nhập lại");
             request.getRequestDispatcher("login1.jsp").forward(request, response);

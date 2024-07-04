@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +38,7 @@
             <div class="spinner-grow text-primary" role="status"></div>
         </div>
         <!-- Spinner End -->
-          <!-- Navbar start -->
+        <!-- Navbar start -->
         <div class="container-fluid fixed-top px-0">
             <div class="container px-0">
                 <div class="topbar">
@@ -76,9 +76,32 @@
                             <a href="campinggear.jsp" class="nav-item nav-link">Camping gear</a>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
-                        <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                            <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
-                        </div>
+
+                        <c:choose>
+                            <c:when test = "${not empty currentUser }">
+                                <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                                    <!-- Add dropdown menu for profile and logout -->
+                                    <div class="dropdown">
+                                        <button class="btn btn-light text-primary me-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-user-circle fa-2x"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" href="UserProfile.jsp">Profile</a></li>
+                                            <li><a class="dropdown-item" href="index.jsp">Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </c:when>
+
+
+                            <c:otherwise>
+
+                                <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                                    <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
+                                </div>
+                            </c:otherwise>
+
+                        </c:choose>
                     </div>
                 </nav>
             </div>
@@ -88,7 +111,7 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
-        
+
         <!-- JavaScript Libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -97,7 +120,7 @@
         <script src="lib/counterup/counterup.min.js"></script>
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
         <script src="lib/lightbox/js/lightbox.min.js"></script>
-        
+
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>

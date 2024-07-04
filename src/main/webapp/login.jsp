@@ -14,7 +14,7 @@
 
                 <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
-                    <form action="loginservlet" method="post" style="width: 23rem;">
+                    <form action="loginservlet1" method="post" style="width: 23rem;">
 
                         <h1 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; color: #007bff; font-size: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">SIGN IN</h1>
 
