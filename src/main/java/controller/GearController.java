@@ -36,7 +36,7 @@ public class GearController extends HttpServlet {
         List<Gear> gears = geardao.getAllGears(page, 8);
 
         request.setAttribute("currentPage", page);
-        request.setAttribute("totalPages", Math.ceil((totalItems / (double) 4)));
+        request.setAttribute("totalPages", Math.ceil((totalItems / (double) 8)));
         request.setAttribute("itemsPerPage", 8);
         request.setAttribute("gears", gears);
 
