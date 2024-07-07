@@ -1,4 +1,4 @@
-USE SWP1;
+﻿USE SWP1;
 GO
 
 -- Create ACCOUNT table
@@ -171,35 +171,36 @@ INSERT INTO PRICE (StartDate, EndDate, Price) VALUES
 GO
 
 -- Insert data into GEAR table
+
 INSERT INTO GEAR (Price_id, Name, Description, Image) VALUES
-(1, N'T�i ng?', N'T�i ng? m�a ?�ng gi? ?m t?t, ch?t li?u m?m m?i, th�ch h?p cho nh?ng chuy?n ?i trong m�a l?nh.', 'tui_ngu.jpg'),
-(2, N'B?p ga du l?ch', N'B?p ga nh? g?n, ti?n l?i khi mang theo, ti?t ki?m nhi�n li?u v� d? s? d?ng.', 'bep_ga.jpg'),
-(3, N'B�nh n??c', N'B�nh n??c gi? nhi?t 1 l�t, gi? l?nh v� gi? n�ng t?t, thi?t k? ch?c ch?n, d? mang theo.', 'binh_nuoc.jpg'),
-(4, N'Ba l� du l?ch', N'Ba l� du l?ch ch?ng n??c, dung t�ch 50L, nhi?u ng?n ti?n l?i, d�y ?eo �m �i, ph� h?p cho nh?ng chuy?n ?i d�i.', 'ba_lo.jpg'),
-(5, N'?�n pin', N'?�n pin LED si�u s�ng, s?c ???c, th?i gian chi?u s�ng l�u, th�ch h?p cho c�c ho?t ??ng ngo�i tr?i.', 'den_pin.jpg'),
-(6, N'D?ng c? n?u ?n', N'B? d?ng c? n?u ?n g?n nh? cho c?m tr?i, bao g?m n?i, ch?o, v� d?ng c? ?n u?ng, ch?t li?u an to�n.', 'dung_cu_nau_an.jpg'),
-(7, N'T?m tr?i picnic', N'T?m tr?i picnic ch?ng th?m n??c, d? d�ng lau s?ch, k�ch th??c l?n, th�ch h?p cho gia ?�nh.', 'tam_trai.jpg'),
-(8, N'D�y th?ng', N'D�y th?ng c?m tr?i ch?u l?c cao, ?? b?n t?t, ?a d?ng, ph� h?p cho nhi?u m?c ?�ch kh�c nhau trong c?m tr?i.', 'day_thung.jpg'),
-(9, N'G?y ?i b?', N'G?y ?i b? ?i?u ch?nh ???c ?? d�i, ch?t li?u nh?, tay c?m �m, h? tr? t?t trong vi?c di chuy?n tr�n ??a h�nh kh� kh?n.', 'gay_di_bo.jpg'),
-(10, N'?�n pin si�u s�ng', N'?�n pin LED si�u s�ng, th�ch h?p cho c�c ho?t ??ng ngo�i tr?i v�o bu?i t?i.', 'den_pin.jpg'),
-(2, N'Gi??ng ng? x�ch tay', N'Gi??ng ng? x�ch tay nh? nh�ng, d? d�ng mang theo khi ?i c?m tr?i ho?c du l?ch.', 'giuong_ngu.jpg'),
-(3, N'B�nh n??c gi? nhi?t', N'B�nh n??c gi? nhi?t 500ml, gi? n??c n�ng ho?c l?nh trong th?i gian d�i.', 'binh_nuoc.jpg'),
-(4, N'Gh? g?p di ??ng', N'Gh? g?p di ??ng nh? nh�ng, ti?n l?i cho vi?c ng?i ngh? trong c�c chuy?n ?i d� ngo?i.', 'ghe_gap.jpg'),
-(5, N'B?p c?n mini', N'B?p c?n mini g?n nh?, d? d�ng s? d?ng ?? n?u ?n trong c�c chuy?n picnic ho?c c?m tr?i.', 'bep_con_mini.jpg'),
-(6, N'�o kho�c ch?ng n??c', N'�o kho�c ch?ng n??c ph� h?p cho m?i ?i?u ki?n th?i ti?t, gi? b?n kh� r�o khi tr?i m?a.', 'ao_khoac.jpg'),
-(7, N'D�y th?ng ch?u l?c', N'D�y th?ng ch?u l?c cao, th�ch h?p cho vi?c c?m tr?i, treo ?? ho?c x�y d?ng tr?i.', 'day_thung.jpg'),
-(8, N'B�nh ??ng n??c si�u nh?', N'B�nh ??ng n??c si�u nh? v� ch?c ch?n, d? d�ng mang theo khi leo n�i ho?c trekking.', 'binh_dung_nuoc.jpg'),
-(9, N'N?i c?m ?i?n du l?ch', N'N?i c?m ?i?n du l?ch nh? g?n, ti?n l?i ?? n?u c?m trong c�c chuy?n ?i d� ngo?i.', 'noi_com_dien.jpg'),
-(10, N'G?ng tay c�ch nhi?t', N'G?ng tay c�ch nhi?t gi? ?m t?t, b?o v? tay khi th?c hi?n c�c ho?t ??ng ngo�i tr?i v�o m�a ?�ng.', 'gang_tay.jpg'),
-(1, N'L?u c?m tr?i', N'L?u c?m tr?i ch?ng n??c cho 4 ng??i, d? d�ng d?ng v� g?p g?n, ph� h?p cho m?i ??a h�nh.', 'leu_cam_trai.jpg'),
-(2, N'L?u 2 l?p ch?ng m?a', N'L?u 2 l?p ch?ng m?a, ch?t li?u b?n ??p, d? d�ng di chuy?n v� s? d?ng.', 'leu_2_lop.jpg'),
-(3, N'L?u d� ngo?i nh?', N'L?u d� ngo?i nh?, d? d�ng g?p g?n v� mang theo, ph� h?p cho c�c chuy?n ?i trekking.', 'leu_da_ngoai.jpg'),
-(4, N'L?u cho gia ?�nh', N'L?u c?m tr?i cho gia ?�nh, thi?t k? r?ng r�i, tho?i m�i v� an to�n cho m?i th�nh vi�n.', 'leu_gia_dinh.jpg'),
-(5, N'L?u ch?ng gi�', N'L?u c?m tr?i ch?ng gi�, ch?ng n??c, gi? ?m t?t trong m?i ?i?u ki?n th?i ti?t kh?c nghi?t.', 'leu_chong_gio.jpg'),
-(6, N'L?u c?m tr?i cho m�a ?�ng', N'L?u c?m tr?i chuy�n d�ng cho m�a ?�ng, ch?ng n??c, gi? ?m t?t, b?n ??p.', 'leu_mua_dong.jpg'),
-(7, N'L?u c?m tr?i 3 m�a', N'L?u c?m tr?i ?a d?ng, ph� h?p cho 3 m�a: xu�n, h?, thu, ch?ng n??c v� gi? ?m.', 'leu_3_mua.jpg'),
-(8, N'L?u d�nh cho c?p ?�i', N'L?u c?m tr?i d�nh cho c?p ?�i, thi?t k? nh? g?n, tho?i m�i, l�ng m?n.', 'leu_doi.jpg'),
-(9, N'L?u c?m tr?i m?t ng??i', N'L?u c?m tr?i ??n gi?n d�nh cho m?t ng??i, g?p g?n, ti?n l?i cho du l?ch ??n.', 'leu_mot_nguoi.jpg'),
-(10, N'L?u c?m tr?i cho c�c chuy?n trekking', N'L?u c?m tr?i chuy�n d�ng cho c�c chuy?n trekking, nh? nh�ng, d? d�ng l?p r�p.', 'leu_trekking.jpg'),
-(11, N'L?u c?m tr?i 4 ng??i', N'L?u c?m tr?i cho 4 ng??i, ch?ng n??c t?t, d? d�ng l?p r�p v� g?p g?n.', 'leu_4_nguoi.jpg');
+(1, N'Túi ngủ', N'Túi ngủ mùa đông giữ ấm tốt, chất liệu mềm mại, thích hợp cho những chuyến đi trong mùa lạnh.', 'tui_ngu.jpg'),
+(2, N'Bếp ga du lịch', N'Bếp ga nhỏ gọn, tiện lợi khi mang theo, tiết kiệm nhiên liệu và dễ sử dụng.', 'bep_ga.jpg'),
+(3, N'Bình nước', N'Bình nước giữ nhiệt 1 lít, giữ lạnh và giữ nóng tốt, thiết kế chắc chắn, dễ mang theo.', 'binh_nuoc.jpg'),
+(4, N'Ba lô du lịch', N'Ba lô du lịch chống nước, dung tích 50L, nhiều ngăn tiện lợi, dây đeo êm ái, phù hợp cho những chuyến đi dài.', 'ba_lo.jpg'),
+(5, N'Đèn pin', N'Đèn pin LED siêu sáng, sạc được, thời gian chiếu sáng lâu, thích hợp cho các hoạt động ngoài trời.', 'den_pin.jpg'),
+(6, N'Dụng cụ nấu ăn', N'Bộ dụng cụ nấu ăn gọn nhẹ cho cắm trại, bao gồm nồi, chảo, và dụng cụ ăn uống, chất liệu an toàn.', 'dung_cu_nau_an.jpg'),
+(7, N'Tấm trải picnic', N'Tấm trải picnic chống thấm nước, dễ dàng lau sạch, kích thước lớn, thích hợp cho gia đình.', 'tam_trai.jpg'),
+(8, N'Dây thừng', N'Dây thừng cắm trại chịu lực cao, độ bền tốt, đa dụng, phù hợp cho nhiều mục đích khác nhau trong cắm trại.', 'day_thung.jpg'),
+(9, N'Gậy đi bộ', N'Gậy đi bộ điều chỉnh được độ dài, chất liệu nhẹ, tay cầm êm, hỗ trợ tốt trong việc di chuyển trên địa hình khó khăn.', 'gay_di_bo.jpg'),
+(10, N'Đèn pin siêu sáng', N'Đèn pin LED siêu sáng, thích hợp cho các hoạt động ngoài trời vào buổi tối.', 'den_pin.jpg'),
+(2, N'Giường ngủ xách tay', N'Giường ngủ xách tay nhẹ nhàng, dễ dàng mang theo khi đi cắm trại hoặc du lịch.', 'giuong_ngu.jpg'),
+(3, N'Bình nước giữ nhiệt', N'Bình nước giữ nhiệt 500ml, giữ nước nóng hoặc lạnh trong thời gian dài.', 'binh_nuoc.jpg'),
+(4, N'Ghế gập di động', N'Ghế gập di động nhẹ nhàng, tiện lợi cho việc ngồi nghỉ trong các chuyến đi dã ngoại.', 'ghe_gap.jpg'),
+(5, N'Bếp cồn mini', N'Bếp cồn mini gọn nhẹ, dễ dàng sử dụng để nấu ăn trong các chuyến picnic hoặc cắm trại.', 'bep_con_mini.jpg'),
+(6, N'Áo khoác chống nước', N'Áo khoác chống nước phù hợp cho mọi điều kiện thời tiết, giữ bạn khô ráo khi trời mưa.', 'ao_khoac.jpg'),
+(7, N'Dây thừng chịu lực', N'Dây thừng chịu lực cao, thích hợp cho việc cắm trại, treo đồ hoặc xây dựng trại.', 'day_thung.jpg'),
+(8, N'Bình đựng nước siêu nhẹ', N'Bình đựng nước siêu nhẹ và chắc chắn, dễ dàng mang theo khi leo núi hoặc trekking.', 'binh_dung_nuoc.jpg'),
+(9, N'Nồi cơm điện du lịch', N'Nồi cơm điện du lịch nhỏ gọn, tiện lợi để nấu cơm trong các chuyến đi dã ngoại.', 'noi_com_dien.jpg'),
+(10, N'Găng tay cách nhiệt', N'Găng tay cách nhiệt giữ ấm tốt, bảo vệ tay khi thực hiện các hoạt động ngoài trời vào mùa đông.', 'gang_tay.jpg'),
+(1, N'Lều cắm trại', N'Lều cắm trại chống nước cho 4 người, dễ dàng dựng và gấp gọn, phù hợp cho mọi địa hình.', 'leu_cam_trai.jpg'),
+(2, N'Lều 2 lớp chống mưa', N'Lều 2 lớp chống mưa, chất liệu bền đẹp, dễ dàng di chuyển và sử dụng.', 'leu_2_lop.jpg'),
+(3, N'Lều dã ngoại nhỏ', N'Lều dã ngoại nhỏ, dễ dàng gấp gọn và mang theo, phù hợp cho các chuyến đi trekking.', 'leu_da_ngoai.jpg'),
+(4, N'Lều cho gia đình', N'Lều cắm trại cho gia đình, thiết kế rộng rãi, thoải mái và an toàn cho mọi thành viên.', 'leu_gia_dinh.jpg'),
+(5, N'Lều chống gió', N'Lều cắm trại chống gió, chống nước, giữ ấm tốt trong mọi điều kiện thời tiết khắc nghiệt.', 'leu_chong_gio.jpg'),
+(6, N'Lều cắm trại cho mùa đông', N'Lều cắm trại chuyên dùng cho mùa đông, chống nước, giữ ấm tốt, bền đẹp.', 'leu_mua_dong.jpg'),
+(7, N'Lều cắm trại 3 mùa', N'Lều cắm trại đa dụng, phù hợp cho 3 mùa: xuân, hạ, thu, chống nước và giữ ấm.', 'leu_3_mua.jpg'),
+(8, N'Lều dành cho cặp đôi', N'Lều cắm trại dành cho cặp đôi, thiết kế nhỏ gọn, thoải mái, lãng mạn.', 'leu_doi.jpg'),
+(9, N'Lều cắm trại một người', N'Lều cắm trại đơn giản dành cho một người, gấp gọn, tiện lợi cho du lịch đơn.', 'leu_mot_nguoi.jpg'),
+(10, N'Lều cắm trại cho các chuyến trekking', N'Lều cắm trại chuyên dùng cho các chuyến trekking, nhẹ nhàng, dễ dàng lắp ráp.', 'leu_trekking.jpg'),
+(11, N'Lều cắm trại 4 người', N'Lều cắm trại cho 4 người, chống nước tốt, dễ dàng lắp ráp và gấp gọn.', 'leu_4_nguoi.jpg');
 GO

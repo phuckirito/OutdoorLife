@@ -67,6 +67,11 @@ public class Gear {
         this.gearImage = gearImage;
     }
 
+    @Override
+    public String toString() {
+        return "Gear{" + "gearId=" + gearId + ", gearPrice=" + gearPrice + ", gearName=" + gearName + ", gearDecription=" + gearDecription + ", gearImage=" + gearImage + '}';
+    }
+
     
     
 }

@@ -181,4 +181,76 @@ public class GearDAO {
         }
         return -1;
     }
+
+    public void deleteGear(String id) throws Exception {
+        String query = "DELETE FROM GEAR WHERE Gear_id = ?";
+
+        try {
+            con = new DBContext().getConnection();
+            ps = con.prepareStatement(query);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertGear(String price, String name, String description, String image) throws Exception {
+        String query = "INSERT INTO GEAR \n"
+                + "              VALUES (?,?,?,?)";
+        try {
+            con = new DBContext().getConnection();
+            ps = con.prepareStatement(query);
+            ps.setInt(1, Integer.parseInt(price));
+            ps.setString(2, name);
+            ps.setString(3, description);
+            ps.setString(4, image);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Gear getGearByID(String id) throws Exception {
+        String query = "select * from GEAR\n"
+                + "	where Gear_id = ?";
+        try {
+            con = new DBContext().getConnection();
+            ps = con.prepareStatement(query);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Gear(rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    public void UpdateGear(String id, String name, String price, String decription, String image) throws Exception {
+        String query = "update GEAR\n"
+                + "set [name] = ?,\n"
+                + "	[Price_id] = ?,\n"
+                + "	[Description] = ?,\n"
+                + "	[Image] = ?\n"
+                + "	where [Gear_id] = ?";
+        try {
+            con = new DBContext().getConnection();
+            ps = con.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setInt(2, Integer.parseInt(price));
+            ps.setString(3, decription);
+            ps.setString(4, image);
+            ps.setInt(5, Integer.parseInt(id));
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

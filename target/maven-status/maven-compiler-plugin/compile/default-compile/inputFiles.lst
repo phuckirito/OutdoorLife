@@ -7,9 +7,13 @@ D:\Project_new\OutdoorLife (1) (1)\src\main\java\dao\OrderDAO.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\model\Cart.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\SearchControl.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\dao\TentDAO.java
+D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\UpdateGearControl.java
+D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\Admin.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\PartialCheckoutServlet.java
+D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\DeleteControl.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\com\vnpay\common\ajaxServlet.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\model\Order.java
+D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\AddControl.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\HomeController.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\VerifyCode.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\model\Campsite.java
@@ -23,7 +27,6 @@ D:\Project_new\OutdoorLife (1) (1)\src\main\java\dao\CampsiteDAO.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\dao\UserDaoImpl.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\com\vnpay\common\vnpayRefund.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\QuantityIncDecServlet.java
-D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\SearchAjax.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\ChangePasswordServlet.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\CartServlet.java
 D:\Project_new\OutdoorLife (1) (1)\src\main\java\controller\OrderNowServlet.java

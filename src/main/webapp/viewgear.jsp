@@ -52,7 +52,7 @@
     }
 </style>
 <body>
-    <jsp:include page="header1.jsp"></jsp:include>  
+    <jsp:include page="header.jsp"></jsp:include>  
         <div class="container" style="margin-top: 200px">
             <div class="search-container">
                 <form action="search" method="post" class="form-inline my-2 my-lg-0">

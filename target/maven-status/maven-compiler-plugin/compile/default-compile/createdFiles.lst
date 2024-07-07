@@ -1,8 +1,12 @@
+controller\UpdateGearControl.class
 controller\ResetPasswordServlet.class
 dao\UserDaoImpl$1.class
 dao\UserDAO.class
 controller\VerifyCode.class
 model\User.class
+controller\AddControl.class
 dao\UserDaoImpl.class
+controller\DeleteControl.class
 controller\SendOtpServlet.class
 dao\DBContext.class
+controller\Admin.class
