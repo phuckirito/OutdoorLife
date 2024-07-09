@@ -1,3 +1,6 @@
+controller\DeleteTentControl.class
+controller\AdminTentControl.class
+controller\TentControl.class
 controller\UpdateGearControl.class
 controller\ResetPasswordServlet.class
 dao\UserDaoImpl$1.class
@@ -7,6 +10,8 @@ model\User.class
 controller\AddControl.class
 dao\UserDaoImpl.class
 controller\DeleteControl.class
+controller\UpdateTentControl.class
 controller\SendOtpServlet.class
 dao\DBContext.class
 controller\Admin.class
+controller\AddTentControl.class
