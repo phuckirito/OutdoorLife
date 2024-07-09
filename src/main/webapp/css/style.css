@@ -733,5 +733,74 @@
     background: var(--bs-dark) !important;
 }
 /*** copyright end ***/
-/*** copyright end ***/
-/*** copyright end ***/
+/*** hihihih***/
+#starRating .fa-star {
+    cursor: pointer;
+    color: #ccc;
+}
+
+#starRating .fa-star.checked {
+    color: #ff9800;
+}
+.calendar .table {
+    width: 100%;
+    margin: auto;
+}
+
+.calendar .day-btn {
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+}
+
+.calendar .day-btn.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.calendar .table {
+    width: 100%;
+    margin: auto;
+}
+
+.calendar .day-btn {
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+}
+
+.calendar .day-btn.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.calendar .day-btn.selected {
+    background-color: #007bff;
+    color: #fff;
+}
+/*màu nút cart*/
+.badge-custom1234 {
+    background-color: #FFA500; /* Màu cam */
+    color: #ffffff; /* Màu chữ trắng */
+    padding: 10px 20px; /* Thêm khoảng đệm trong nút */
+    border-radius: 25px; /* Góc bo tròn */
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    border: none; /* Loại bỏ viền mặc định */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bóng đổ */
+    transition: background-color 0.3s, transform 0.3s; /* Hiệu ứng chuyển đổi */
+    cursor: pointer; /* Thay đổi con trỏ khi di chuột qua */
+    text-align: center; /* Canh giữa chữ */
+    text-decoration: none; /* Loại bỏ gạch chân nếu là thẻ a */
+}
+
+.badge-custom1234:hover {
+    background-color: #ff8c00; /* Màu khi di chuột qua */
+    transform: scale(1.05); /* Phóng to nhẹ khi di chuột qua */
+}
+
+.badge-custom1234:active {
+    background-color: #e67e22; /* Màu khi bấm giữ */
+    transform: scale(1); /* Trở về kích thước ban đầu */
+}
+

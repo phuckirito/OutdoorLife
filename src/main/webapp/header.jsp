@@ -1,5 +1,15 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>User</title>
+    </head>
+
+</html>
 <!DOCTYPE html>
 <html lang="en">
+
 
     <head>
         <meta charset="utf-8">
@@ -21,12 +31,12 @@
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-
+        <link href="addtocart.css" rel="stylesheet">
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="css/style.css" tyle="text/css" rel="stylesheet">
+        <link href="css/style.css" type="text/css" rel="stylesheet">
     </head>
 
     <body>
@@ -36,8 +46,6 @@
             <div class="spinner-grow text-primary" role="status"></div>
         </div>
         <!-- Spinner End -->
-
-
         <!-- Navbar start -->
         <div class="container-fluid fixed-top px-0">
             <div class="container px-0">
@@ -61,7 +69,7 @@
                     </div>
                 </div>
                 <nav class="navbar navbar-light bg-light navbar-expand-xl">
-                    <a href="index.html" class="navbar-brand ms-3">
+                    <a href="index.jsp" class="navbar-brand ms-3">
                         <h1 class="text-primary display-5">Outdoor-Life</h1>
                     </a>
                     <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -69,18 +77,62 @@
                     </button>
                     <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
                         <div class="navbar-nav ms-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="service.html" class="nav-item nav-link">Services</a>
-                            <a href="campsite.html" class="nav-item nav-link">campsite</a>
-                            <a href="campinggear.html" class="nav-item nav-link">camping gear</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="index.jsp" class="nav-item nav-link active">Home</a>
+                            <a href="about.jsp" class="nav-item nav-link">About</a>
+                            <a href="service.jsp" class="nav-item nav-link">Services</a>
+                            <a href="campsite.jsp" class="nav-item nav-link">Campsite</a>
+                            <a href="campinggear.jsp" class="nav-item nav-link">Camping gear</a>
+                            <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                         </div>
-                        <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                            <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
-                        </div>
+
+                        <c:choose>
+                            <c:when test = "${not empty currentUser }">
+                                <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                                    <!-- Add dropdown menu for profile and logout -->
+                                    <div class="dropdown">
+                                        <button class="btn btn-light text-primary me-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-user-circle fa-2x"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" href="UserProfile.jsp">Profile</a></li>
+                                            <li><a class="dropdown-item" href="index.jsp">Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </c:when>
+
+
+                            <c:otherwise>
+
+                                <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                                    <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
+                                </div>
+                            </c:otherwise>
+
+                        </c:choose>
                     </div>
                 </nav>
             </div>
         </div>
         <!-- Navbar End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+
+    </body>
+
+</html>
