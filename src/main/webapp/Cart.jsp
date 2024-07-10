@@ -5,7 +5,6 @@
 <%@page import="model.*"%>
 <%@page import="java.util.*"%>
 <%@page import="java.text.DecimalFormat"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
 DecimalFormat dcf = new DecimalFormat("#.##");
@@ -27,24 +26,21 @@ if (cart_list != null) {
     request.setAttribute("cart_list", cart_list);
     request.setAttribute("cartProduct", cartProduct);
 }
-
-int totalInt = Integer.parseInt(String.valueOf((int) total));
+int totalInt = (int) total;
 session.setAttribute("totalInt", totalInt);
 %>
 <body>
-    <jsp:include page="header1.jsp"></jsp:include>   
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto">
-                    <div class="card border-e shadow rounded-3" style="margin-top: 200px">
-                        <div class="card-body p-4 p-sm-5">
-                            <div class="total-price-container">
-                                <h3>Total Price: <%%> </h3>
-                                <a class="mx-3 btn btn-primary" href="checkout">Thanh toán tất cả</a>
-                            </div>
+    <jsp:include page="header1.jsp"></jsp:include>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto">
+                <div class="card border-e shadow rounded-3" style="margin-top: 200px">
+                    <div class="card-body p-4 p-sm-5">
+                        <div class="total-price-container">
+                            <h3>Total: <%= total > 0 ? dcf.format(total) + "₫" : "0 ₫" %> </h3>
+                            <a class="mx-3 btn btn-primary" href="checkout">Order All</a>
+                        </div>
                         <form id="cart-form" action="partialCheckout" method="post">
-                            <div class="total-price-container">
-                            </div>
                             <table class="table table-light">
                                 <thead>
                                     <tr>
@@ -52,7 +48,8 @@ session.setAttribute("totalInt", totalInt);
                                         <th scope="col">Name</th>
                                         <th scope="col">Category</th>
                                         <th scope="col">Price</th>
-                                        <th scope="col">Buy Now</th>
+                                        <th scope="col">Order now</th>
+                                        <th scope="col">Quantity</th>
                                         <th scope="col">Cancel</th>
                                     </tr>
                                 </thead>
@@ -61,21 +58,24 @@ session.setAttribute("totalInt", totalInt);
                                     if (cart_list != null && cartProduct != null) {
                                         for (Cart c : cartProduct) {
                                     %>
-                                    <tr data-gear-id="<%= c.getGearId() %>">
+                                    <tr>
                                         <td><input type="checkbox" name="selectedItems" value="<%= c.getGearId() %>" class="form-check-input" onclick="calculateSelectedTotal()"></td>
                                         <td><%=c.getGearName()%></td>
                                         <td><%=c.getGearDecription()%></td>
-                                        <td class="gear-price" data-gear-price="<%= c.getGearPrice() %>"><%= dcf.format(c.getGearPrice()) %></td>
+                                        <td class="gear-price"><%= dcf.format(c.getGearPrice()) %></td>
                                         <td>
-                                            <form action="ordernow" method="post" class="form-inline">
-                                                <input type="hidden" name="id" value="<%= c.getGearId()%>" class="form-input">
-                                                <button type="submit" class="btn btn-primary btn-sm">Buy</button>
-                                                <div class="form-group d-flex justify-content-between">
-                                                    <button type="button" class="btn btn-sm btn-incre" onclick="updateQuantity('inc', <%=c.getGearId()%>, this)"><i class="fas fa-plus-square"></i></button>
-                                                    <input type="text" name="quantity" class="form-control" value="<%=c.getQuantity()%>" readonly> 
-                                                    <button type="button" class="btn btn-sm btn-decre" onclick="updateQuantity('dec', <%=c.getGearId()%>, this)"><i class="fas fa-minus-square"></i></button>
-                                                </div>
-                                            </form>
+                                            <button type="button" class="btn btn-primary btn-sm" onclick="orderNow('<%= c.getGearId()%>')">Order</button>
+                                        </td>
+                                        <td>
+                                            <div class="form-group d-flex justify-content-between">
+                                                <a class="btn btn-sm btn-incre" href="quantityset?action=inc&id=<%=c.getGearId()%>">
+                                                    <i class="fas fa-plus-square"></i>
+                                                </a>
+                                                <input type="text" name="quantity" class="form-control" value="<%=c.getQuantity()%>" readonly>
+                                                <a class="btn btn-sm btn-decre" href="quantityset?action=dec&id=<%=c.getGearId()%>">
+                                                    <i class="fas fa-minus-square"></i>
+                                                </a>
+                                            </div>
                                         </td>
                                         <td><a href="remove?id=<%=c.getGearId()%>" class="btn btn-sm btn-danger">Remove</a></td>
                                     </tr>
@@ -84,10 +84,11 @@ session.setAttribute("totalInt", totalInt);
                                     }
                                     %>
                                 </tbody>
-
                             </table>
-                            <h3>Selected Total: <span id="selected-total-price">0</span> ₫</h3>
-                            <button type="submit" class="mx-3 btn btn-primary">Thanh toán đã chọn</button>
+                            <div class="total-price-container">
+                                <h3>Selected Total: <span id="selected-total-price">0</span> ₫</h3>
+                                <button type="summit" class="mx-3 btn btn-primary" onclick="submitSelectedItems()">Order Selected</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -96,37 +97,47 @@ session.setAttribute("totalInt", totalInt);
     </div>
 
     <script>
-       
         function calculateSelectedTotal() {
             let total = 0;
             document.querySelectorAll('input[name="selectedItems"]:checked').forEach(function (checkbox) {
                 let priceElement = checkbox.closest('tr').querySelector('.gear-price');
-                let quantityElement = checkbox.closest('tr').querySelector('input[name="quantity"]');
-                let price = parseFloat(priceElement.getAttribute('data-gear-price')) * parseInt(quantityElement.value);
-                total += price;
+                let price = parseFloat(priceElement.innerText.replace(/[^0-9.-]+/g, ""));
+
+                let quantityElement = checkbox.closest('tr').querySelector('.form-control');
+                let quantity = parseInt(quantityElement.value);
+
+                let subtotal = price * quantity;
+                total += subtotal;
             });
             document.getElementById('selected-total-price').innerText = total;
         }
 
-        function updateQuantity(action, gearId, element) {
-            let xhr = new XMLHttpRequest();
-            xhr.open('POST', 'quantityset', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    let response = JSON.parse(xhr.responseText);
-                    let quantityElement = element.closest('.form-group').querySelector('input[name="quantity"]');
-                    if (action === 'inc') {
-                        quantityElement.value = parseInt(quantityElement.value) + 1;
-                    } else if (action === 'dec' && parseInt(quantityElement.value) > 1) {
-                        quantityElement.value = parseInt(quantityElement.value) - 1;
-                    }
-                    calculateSelectedTotal();
-                } else {
-                    console.error('Failed to update quantity');
-                }
-            };
-            xhr.send('action=' + action + '&id=' + gearId);
+        function orderNow(gearId) {
+            let quantityElement = document.querySelector('input[name="quantity"]');
+            let quantity = parseInt(quantityElement.value); // Lấy số lượng từ input
+
+            // Cài đặt logic để gửi yêu cầu đặt hàng tới servlet
+            let form = document.createElement('form');
+            form.setAttribute('method', 'post');
+            form.setAttribute('action', 'ordernow');
+
+            let idInput = document.createElement('input');
+            idInput.setAttribute('type', 'hidden');
+            idInput.setAttribute('name', 'id');
+            idInput.setAttribute('value', gearId);
+            form.appendChild(idInput);
+
+            let quantityInput = document.createElement('input');
+            quantityInput.setAttribute('type', 'hidden');
+            quantityInput.setAttribute('name', 'quantity');
+            quantityInput.setAttribute('value', quantity);
+            form.appendChild(quantityInput);
+
+            document.body.appendChild(form);
+            form.submit();
         }
+
+       
     </script>
+
 </body>

@@ -42,5 +42,6 @@ public class GearController extends HttpServlet {
 
         request.setAttribute("gears", gears);
         request.getRequestDispatcher("/viewgear.jsp").forward(request, response);
+       
     }
 }
