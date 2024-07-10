@@ -38,11 +38,12 @@
                         <table class="table table-light">
                             <thead>
                                 <tr>
-                                    <th scope="col">Date</th>
+                                    <th scope="col">Time Order</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Price</th>
+                                    <th scope="col">Payment</th>
                                     <th scope="col">Cancel</th>
                                 </tr>
                             </thead>
@@ -57,7 +58,20 @@
                                     <td><%=o.getGearDecription() %></td>   
                                     <td><%=o.getQuantity() %></td> 
                                     <td><%=o.getGearPrice() %></td>
-                                    <td><a class="btn btn-sm btn-danger" href="cancelorder?id=<%=o.getOrdersId()%>">Cancel Order</a></td>
+                                    <td>
+                                            <%
+                                                if (o.isPaymentStatus()) {
+                                            %>
+                                            completed
+                                            <%
+                                                } else {
+                                            %>
+                                            not yet
+                                            <%
+                                                }
+                                            %>
+                                        </td> 
+                                    <td><a class="btn btn-sm btn-danger" href="cancelorder?id=<%=o.getOrdersId()%>&redirectPage=orders.jsp">Cancel Order</a></td>
                                 </tr>
                                 <%}
                         }

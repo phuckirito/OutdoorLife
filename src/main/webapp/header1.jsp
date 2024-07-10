@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +22,7 @@
         <!-- Libraries Stylesheet -->
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
+
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                <nav class="navbar navbar-light bg-light navbar-expand-xl" style="margin-bottom: 0px;">
+                <nav class="navbar navbar-light bg-light navbar-expand-xl">
                     <a href="index.jsp" class="navbar-brand ms-3">
                         <h1 class="text-primary display-5">Outdoor-Life</h1>
                     </a>
@@ -72,17 +72,62 @@
                             <a href="index.jsp" class="nav-item nav-link active">Home</a>                        
                             <a href="campsite.jsp" class="nav-item nav-link">Campsite</a>
                             <a href="campinggear.jsp" class="nav-item nav-link">Gear</a>
-                            <a href="orders.jsp" class="nav-item nav-link">Order</a>
+                            <a href="#" class="nav-item nav-link" onclick="openOrderPopup()">Order</a>
                             <li class="nav-item"><a class="nav-link" href="Cart.jsp">Cart <span class="badge-custom">${cart_list.size()}</span> </a></li>
                         </div>
-                        <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                            <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
-                        </div>
+
+                        <c:choose>
+                            <c:when test = "${not empty currentUser }">
+                                <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                                    <!-- Add dropdown menu for profile and logout -->
+                                    <div class="dropdown">
+                                        <button class="btn btn-light text-primary me-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-user-circle fa-2x"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" href="UserProfile.jsp">Profile</a></li>
+                                            <li><a class="dropdown-item" href="index.jsp">Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </c:when>
+
+
+                            <c:otherwise>
+
+                                <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                                    <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
+                                </div>
+                            </c:otherwise>
+
+                        </c:choose>
                     </div>
                 </nav>
             </div>
         </div>
         <!-- Navbar End -->
+
+
+        <!-- modal start -->
+        <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderModalLabel">Choose Order Option</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Choose where you want to go:</p>
+                        <div class="d-grid gap-2">
+                            <a href="orders.jsp" class="btn btn-primary">Gear Order</a>
+                            <a href="orderscamp.jsp" class="btn btn-primary">Camp Order</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal End -->
+
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
@@ -102,5 +147,13 @@
         <script src="js/main.js"></script>
 
     </body>
+    <script>
+                                function openOrderPopup() {
+                                    var modal = new bootstrap.Modal(document.getElementById('orderModal'), {
+                                        keyboard: false
+                                    });
+                                    modal.show();
+                                }
+    </script>
 
 </html>

@@ -17,59 +17,10 @@ if (auth != null) {
 DBContext dbContext = new DBContext();
 CampsiteDAO cd = new CampsiteDAO();
 CommentDAO cm = new CommentDAO();
-List<Campsite> campsites = cd.getAllRiverCampsite();
-List<Comment> comments = cm.getAllRiverComment();
+List<Campsite> campsites = cd.getAllMountainCampsite();
+List<Comment> comments = cm.getAllMountainComment();
 %>
 
-<style>
-    .container {
-        padding: 2rem 0;
-    }
-    .card {
-        background-color: #fff;
-        border: none;
-        border-radius: 0.5rem;
-
-        margin-bottom: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-    .card-header {
-        padding: 1rem 1.5rem;
-        margin-bottom: 1rem;
-        background-color: #f8f9fa;
-        border-radius: 0.5rem 0.5rem 0 0;
-        text-align: center;
-        font-size: 1.25rem;
-        font-weight: bold;
-    }
-    .card-body {
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .card-img-top {
-        height: 200px;
-        object-fit: cover;
-        border-radius: 0.5rem 0.5rem 0 0;
-    }
-    .card-title {
-        font-size: 1.25rem;
-        margin: 0.5rem 0;
-    }
-    .price, .category {
-        font-size: 1rem;
-        margin: 0.25rem 0;
-    }
-    .btn {
-        width: 80%;
-    }
-    .row {
-        margin-bottom: 1.5rem; /* Adjust this value to increase/decrease spacing between rows */
-    }
-</style>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,7 +78,7 @@ List<Comment> comments = cm.getAllRiverComment();
         <!-- Header End -->
 
         <!-- Services Start -->
-        <div class="container">
+        <div class="container-fluid service py-5 bg-light">
             <div class="container py-5">
                 <div class="text-center mx-auto pb-5" style="max-width: 800px;">
                     <h5 class="text-uppercase text-primary">Rent</h5>
@@ -137,10 +88,10 @@ List<Comment> comments = cm.getAllRiverComment();
                         <%
                         if (!campsites.isEmpty()) {
                             for (Campsite c : campsites) { %>
-                        <div class="col-md-3 d-flex">    
-                            <div class="card border-e shadow rounded-3 w-100"">
-                                
-                                    <img class="card-img-top" src="img/<%= c.getCampImage() %>" alt="Card image cap">
+                        <div class="row g-4">    
+                            <div class="col-md-6 col-lg-6 col-xl-4">
+                                <div class="service-item">
+                                    <img class="img-fluid w-100" src="img/<%= c.getCampImage() %>" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title"><%= c.getCampName() %></h5>
                                         <h6 class="category"><%= c.getCampAddress() %></h6>
@@ -149,10 +100,9 @@ List<Comment> comments = cm.getAllRiverComment();
                                             <button class="btn btn-secondary mt-3" type="submit" name="campId" value="<%= c.getCampId() %>">Book Now</button>
                                         </div>
                                     </div>
-                                
+                                </div>
                             </div>
                         </div>
-                                        
                         <% }
                 } %>                       
                     </form>
@@ -160,8 +110,8 @@ List<Comment> comments = cm.getAllRiverComment();
 
                 <form action="comment" method="post" ">
                     <!-- Comment Section Start -->
-                    <input type="hidden" name="campAddress" value="Sông">
-                    <input type="hidden" name="originPage" value="form1.jsp">
+                    <input type="hidden" name="campAddress" value="Núi">
+                    <input type="hidden" name="originPage" value="form2.jsp">
                     <div class="comment-section mt-5">
                         <h5 class="text-uppercase text-primary mb-4">Comments</h5>
                         <div class="comment-box mb-2">
