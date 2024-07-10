@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Connection;
 
 /**
  *
@@ -19,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "DeleteTentControl", urlPatterns = {"/deletetent"})
 public class DeleteTentControl extends HttpServlet {
-
+    private Connection con;
 
     
 
@@ -36,7 +37,7 @@ public class DeleteTentControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id"); //get id tu jsp
-        GearDAO gear = new GearDAO();               //pass id tu dao
+        GearDAO gear = new GearDAO(con);
         try {
             gear.deleteGear(id);
         } catch (Exception ex) {

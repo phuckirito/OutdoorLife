@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author vietn
- */
+
 public class Gear {
     private int gearId;
     private int gearPrice;
@@ -67,11 +60,5 @@ public class Gear {
         this.gearImage = gearImage;
     }
 
-    @Override
-    public String toString() {
-        return "Gear{" + "gearId=" + gearId + ", gearPrice=" + gearPrice + ", gearName=" + gearName + ", gearDecription=" + gearDecription + ", gearImage=" + gearImage + '}';
-    }
-
-    
     
 }

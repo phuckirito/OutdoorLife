@@ -15,18 +15,16 @@ public class GearDAO {
     private PreparedStatement ps;
     private ResultSet rs;
 
-    public GearDAO(Connection con) {
-        this.con = con;
-    }
 
-    public GearDAO() {
-
+    public GearDAO(Connection con) { 
+        this.con = con; 
     }
 
     public List<Gear> getAllGears() {
         List<Gear> gears = new ArrayList<>();
-        String query = "SELECT G.*, P.Price FROM GEAR G INNER JOIN PRICE P ON G.Price_id = P.Price_id WHERE G.Name NOT LIKE N'%Lều%'";
-        try (PreparedStatement pst = this.con.prepareStatement(query); ResultSet rs = pst.executeQuery()) {
+        String query = "SELECT G.*, P.Price FROM GEAR G INNER JOIN PRICE P ON G.Price_id = P.Price_id WHERE G.Name LIKE N'%Lều%'";
+        try (PreparedStatement pst = this.con.prepareStatement(query); 
+             ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
                 Gear gear = new Gear();
                 gear.setGearId(rs.getInt("Gear_id"));
@@ -36,35 +34,6 @@ public class GearDAO {
                 gear.setGearImage(rs.getString("Image"));
                 gears.add(gear);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return gears;
-    }
-
-    public List<Gear> searchByName(String txtSearch) throws Exception {
-        List<Gear> gears = new ArrayList<>();
-        String query = "SELECT g.Gear_id, g.Name, g.Description, g.Image, p.Price "
-                + "FROM GEAR g "
-                + "JOIN PRICE p ON g.Price_id = p.Price_id "
-                + "WHERE g.Name LIKE ?";
-
-        try {
-            con = new DBContext().getConnection();
-            ps = con.prepareStatement(query);
-            ps.setString(1, "%" + txtSearch + "%");
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Gear gear = new Gear();
-                gear.setGearId(rs.getInt("Gear_id"));
-                gear.setGearPrice(rs.getInt("Price"));
-                gear.setGearName(rs.getString("Name"));
-                gear.setGearDecription(rs.getString("Description"));
-                gear.setGearImage(rs.getString("Image"));
-                gears.add(gear);
-            }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -137,7 +106,23 @@ public class GearDAO {
         }
         return row;
     }
+    public int getTotalItem() {
+        try {
+            String sql = "SELECT COUNT(*) AS total_items \n"
+                    + "FROM GEAR \n"
+                    + "WHERE Name NOT LIKE N'Lều%';";
+            PreparedStatement ps = this.con.prepareStatement(sql);
 
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("total_items");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
     public List<Gear> getAllGears(int page, int size) {
         List<Gear> gears = new ArrayList<>();
         String query = "SELECT G.*, P.Price FROM GEAR G INNER JOIN PRICE P ON G.Price_id = P.Price_id WHERE G.Name NOT LIKE N'%Lều%' "
@@ -163,25 +148,35 @@ public class GearDAO {
         }
         return gears;
     }
+    
+    public List<Gear> searchByName(String txtSearch) throws Exception {
+        List<Gear> gears = new ArrayList<>();
+        String query = "SELECT g.Gear_id, g.Name, g.Description, g.Image, p.Price "
+                + "FROM GEAR g "
+                + "JOIN PRICE p ON g.Price_id = p.Price_id "
+                + "WHERE g.Name LIKE ?";
 
-    public int getTotalItem() {
         try {
-            String sql = "SELECT COUNT(*) AS total_items \n"
-                    + "FROM GEAR \n"
-                    + "WHERE Name NOT LIKE N'Lều%';";
-            PreparedStatement ps = this.con.prepareStatement(sql);
+            con = new DBContext().getConnection();
+            ps = con.prepareStatement(query);
+            ps.setString(1, "%" + txtSearch + "%");
+            rs = ps.executeQuery();
 
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                return rs.getInt("total_items");
+            while (rs.next()) {
+                Gear gear = new Gear();
+                gear.setGearId(rs.getInt("Gear_id"));
+                gear.setGearPrice(rs.getInt("Price"));
+                gear.setGearName(rs.getString("Name"));
+                gear.setGearDecription(rs.getString("Description"));
+                gear.setGearImage(rs.getString("Image"));
+                gears.add(gear);
             }
-        } catch (Exception e) {
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return gears;
     }
-
     public void deleteGear(String id) throws Exception {
         String query = "DELETE FROM GEAR WHERE Gear_id = ?";
 

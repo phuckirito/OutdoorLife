@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Connection;
 import model.Gear;
 
 /**
@@ -20,8 +21,8 @@ import model.Gear;
  * @author ADMIN
  */
 @WebServlet(name = "UpdateGearControl", urlPatterns = {"/update"})
-public class UpdateGearControl extends HttpServlet {
-
+public class UpdateGearControll extends HttpServlet {
+    private Connection con;
 @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -36,7 +37,7 @@ public class UpdateGearControl extends HttpServlet {
             
         }
         
-        request.getRequestDispatcher("Update.jsp").forward(request, response);
+        request.getRequestDispatcher("UpdateGear.jsp").forward(request, response);
     }
 
     
@@ -48,7 +49,7 @@ public class UpdateGearControl extends HttpServlet {
             String price = request.getParameter("gearPrice");
             String decription = request.getParameter("gearDecription");
             String image = request.getParameter("gearImage");
-            GearDAO gear = new GearDAO();
+            GearDAO gear = new GearDAO(con);
             try{
             gear.UpdateGear(id, name, price, decription, image);
         }

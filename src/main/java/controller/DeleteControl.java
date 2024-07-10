@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,12 +22,12 @@ import java.util.logging.Logger;
  */
 @WebServlet(name = "DeleteControl", urlPatterns = {"/delete"})
 public class DeleteControl extends HttpServlet {
-
+    private Connection con; 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id"); //get id tu jsp
-        GearDAO gear = new GearDAO();               //pass id tu dao
+        GearDAO gear = new GearDAO(con);
         try {
             gear.deleteGear(id);
         } catch (Exception ex) {

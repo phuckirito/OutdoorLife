@@ -36,7 +36,32 @@ public class UserDaoImpl extends DBContext implements UserDAO {
     }
 
     @Override
-    public boolean insertGuest(String firstName, String lastName,String email, String phoneNumber, String password) {
+    public User findByEmail(String email) {
+        String query = "SELECT * FROM ACCOUNT WHERE Gmail = ?";
+        try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    User user = new User();
+                    user.setId(rs.getInt("Account_id"));
+                    user.setFirstName(rs.getString("first_name"));
+                    user.setLastName(rs.getString("last_name"));
+                    user.setEmail(email);
+                    user.setPhoneNumber(rs.getString("phone_number"));
+                    user.setPasswordHash(rs.getString("passwordHash"));
+                    user.setAdmin(rs.getBoolean("isAdmin"));
+                    user.setUser(rs.getBoolean("isUser"));
+                    return user;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean insertGuest(String firstName, String lastName, String email, String phoneNumber, String password) {
         try {
             // Get connection
             Connection conn = getConnection();
@@ -74,40 +99,38 @@ public class UserDaoImpl extends DBContext implements UserDAO {
     }
 
     public boolean sendEmail(User user) {
-    boolean test = false;
-    String toEmail = user.getEmail();
-    String fromEmail = "vietnqde170722@fpt.edu.vn";
-    String passwordEmail = "enyujdkngfzylzkj"; 
+        boolean test = false;
+        String toEmail = user.getEmail();
+        String fromEmail = "vietnqde170722@fpt.edu.vn";
+        String passwordEmail = "enyujdkngfzylzkj";
+        try {
+            Properties pr = new Properties();
+            pr.put("mail.smtp.host", "smtp.gmail.com");
+            pr.put("mail.smtp.port", "587");
+            pr.put("mail.smtp.auth", "true");
+            pr.put("mail.smtp.starttls.enable", "true");
 
-    try {
-        Properties pr = new Properties();
-        pr.put("mail.smtp.host", "smtp.gmail.com");
-        pr.put("mail.smtp.port", "587");
-        pr.put("mail.smtp.auth", "true");
-        pr.put("mail.smtp.starttls.enable", "true");
+            Session session = Session.getInstance(pr, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(fromEmail, passwordEmail);
+                }
+            });
 
-        Session session = Session.getInstance(pr, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(fromEmail, passwordEmail);
-            }
-        });
+            Message mess = new MimeMessage(session);
+            mess.setFrom(new InternetAddress(fromEmail));
+            mess.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            mess.setSubject("Verify Email Register Account");
+            mess.setText("Register Successfully!! Please verify your account using this code: " + user.getCode());
 
-        Message mess = new MimeMessage(session);
-        mess.setFrom(new InternetAddress(fromEmail));
-        mess.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-        mess.setSubject("Verify Email Register Account");
-        mess.setText("Register Successfully!! Please verify your account using this code: " + user.getCode());
+            Transport.send(mess);
+            test = true;
 
-        Transport.send(mess);
-        test = true;
-
-    } catch (Exception e) {
-        e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return test;
     }
-    return test;
-}
-
 
     public boolean emailExists(String email) throws Exception {
         boolean exists = false;
@@ -124,57 +147,49 @@ public class UserDaoImpl extends DBContext implements UserDAO {
     }
 
     @Override
-    public User findByEmail(String email) {
-        String query = "SELECT * FROM ACCOUNT WHERE Gmail=?";
-        try (
-            Connection conn = getConnection(); 
-            PreparedStatement ps = conn.prepareStatement(query)) {
-            // Set the email parameter
-            ps.setString(1, email);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    int id = rs.getInt("Account_id"); // Assuming 'id' is the column name
-                    String firstName = rs.getString("first_name");
-                    String lastName = rs.getString("last_name");
-                    String password = rs.getString("passwordHash");
-                    boolean isAdmin=rs.getBoolean("isAdmin");
-                // Create and return the User object
-                    User user = new User();
-                    user.setId(id);
-                    user.setFirstName(firstName);
-                    user.setLastName(lastName);
-                    user.setPasswordHash(password);
-                    user.setAdmin(isAdmin);
-                    return user;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace(); // Log or handle the exception as needed
-        }
-        return null;
-    }
-    public boolean updatePassword(String email, String newPassword) throws Exception {
-        try (
-                Connection conn = getConnection();) {
-            String sql = "UPDATE ACCOUNT SET passwordHash = ? WHERE Gmail = ?";
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, newPassword); // Bạn có thể mã hóa mật khẩu trước khi lưu vào DB
-                stmt.setString(2, email);
-                return stmt.executeUpdate() > 0;
-            }
+    public boolean updateInfo(User user) throws Exception {
+        String sql = "UPDATE ACCOUNT SET first_name = ?, last_name = ?, phone_number = ?, Gmail = ? WHERE Account_id = ?";
+        try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, user.getFirstName());
+            ps.setString(2, user.getLastName());
+            ps.setString(3, user.getPhoneNumber());
+            ps.setString(4, user.getEmail());
+            ps.setString(5, user.getPasswordHash());
+            ps.setInt(5, user.getId());
+            return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    public boolean changePassword(String email, String currentPassword, String newPassword) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    @Override
+    public boolean updatePassword(String email, String newPassword) throws Exception {
+        String hashedNewPassword = hashPassword(newPassword);
+        String sql = "UPDATE ACCOUNT SET passwordHash = ? WHERE Gmail = ?";
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, hashedNewPassword);
+            stmt.setString(2, email);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public boolean updateInfo(User currentUser) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean changePassword(String email, String currentPassword, String newPassword) {
+        User user = findByEmail(email);
+        if (user != null) {
+            try {
+                String hashedCurrentPassword = hashPassword(currentPassword);
+                if (user.getPasswordHash().equals(hashedCurrentPassword)) {
+                    return updatePassword(email, newPassword);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
-
 }

@@ -64,8 +64,8 @@ public class CheckoutServlet extends HttpServlet {
                         break;
                     }
                 }
-//                cart_list.clear();
-                response.sendRedirect("vnpay.jsp");
+                cart_list.clear();
+                response.sendRedirect("orders.jsp");
             } else {
                 if (auth == null) {
                     response.sendRedirect("login1.jsp");

@@ -51,7 +51,8 @@ public class CancelOrderServlet extends HttpServlet {
                 OrderDAO orderDao = new OrderDAO(db.getConnection());
                 orderDao.cancelOrder(Integer.parseInt(id));
             }
-            response.sendRedirect("orders.jsp");
+            String redirectPage = request.getParameter("redirectPage");
+            response.sendRedirect(redirectPage);
         } catch (ClassNotFoundException | SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -59,16 +60,5 @@ public class CancelOrderServlet extends HttpServlet {
             Logger.getLogger(CancelOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
