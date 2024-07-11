@@ -50,6 +50,7 @@ public class TentControl extends HttpServlet {
         request.setAttribute("gears", gears);
         request.getRequestDispatcher("/viewtent.jsp").forward(request, response);
     }
-    }
+    
+}
 
 

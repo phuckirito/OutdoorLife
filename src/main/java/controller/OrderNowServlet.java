@@ -48,11 +48,12 @@ public class OrderNowServlet extends HttpServlet {
                 boolean result = orderDao.insertOrder(order);
 
                 if (result) {
+                    // Xóa sản phẩm đã đặt hàng khỏi giỏ hàng
                     ArrayList<Cart> cart_list = (ArrayList<Cart>) request.getSession().getAttribute("cart-list");
                     if (cart_list != null) {
                         cart_list.removeIf(c -> c.getGearId() == Integer.parseInt(productId));
                     }
-                    response.sendRedirect("vnpay.jsp");
+                    response.sendRedirect("orders.jsp");
                 } else {
                     out.println("Đặt hàng thất bại");
                 }

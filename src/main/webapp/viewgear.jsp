@@ -1,7 +1,23 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import = "dao.TentDAO"%>
+<%@page import = "dao.DBContext"%>
+<%@page import = "java.util.List"%>
+<%@page import = "model.Gear" %>
+<%@page import = "model.Cart" %>
+<%@page import = "java.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
 
 
+ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+if (cart_list != null) {
+    request.setAttribute("cart_list", cart_list);
+    
+}
+%>
 <style>
     .container {
         padding: 2rem 0;
@@ -52,7 +68,7 @@
     }
 </style>
 <body>
-    <jsp:include page="header.jsp"></jsp:include>  
+    <jsp:include page="header1.jsp"></jsp:include>  
         <div class="container" style="margin-top: 200px">
             <div class="search-container">
                 <form action="search" method="post" class="form-inline my-2 my-lg-0">
@@ -76,7 +92,7 @@
                             <h6 class="price">${g.gearPrice}</h6>
                             <h6 class="category">${g.gearDecription}</h6>
                             <div class="mt-3 d-flex justify-content-between">
-                                <a href="cartservlet?id=${g.gearId}" class="btn btn-primary">Add to Cart</a>
+                                <a href="cartservlet?id=${g.gearId}&redirectPage=/Login/gearcontroller" class="btn btn-primary">Add to Cart</a>
                                 <a href="ordernow?quantity=1&id=${g.gearId}" class="btn btn-primary">Buy Now</a>
                             </div>
                         </div>
