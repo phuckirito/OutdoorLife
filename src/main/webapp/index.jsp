@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -8,84 +8,31 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
 
-        <!-- Google Web Fonts -->
+         Google Web Fonts 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> 
 
-        <!-- Icon Font Stylesheet -->
+         Icon Font Stylesheet 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-        <!-- Libraries Stylesheet -->
+         Libraries Stylesheet 
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
 
-        <!-- Customized Bootstrap Stylesheet -->
+         Customized Bootstrap Stylesheet 
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Template Stylesheet -->
+         Template Stylesheet 
         <link href="css/style.css" tyle="text/css" rel="stylesheet">
-    </head>
+    </head>-->
 
     <body>
 
-        <!-- Spinner Start -->
-        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" role="status"></div>
-        </div>
-        <!-- Spinner End -->
-
-
-        <!-- Navbar start -->
-        <div class="container-fluid fixed-top px-0">
-            <div class="container px-0">
-                <div class="topbar">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-md-8">
-                            <div class="topbar-info d-flex flex-wrap">
-                                <a href="#" class="text-light me-4"><i class="fas fa-envelope text-white me-2"></i>phucnhde170706@fpt.edu.vn</a>
-                                <a href="#" class="text-light"><i class="fas fa-phone-alt text-white me-2"></i>0941887045</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="topbar-icon d-flex align-items-center justify-content-end">
-                                <a href="https://www.facebook.com/Phuc250703/" class="btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.facebook.com/Phuc250703/" class="btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/Phuc250703/" class="btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.facebook.com/Phuc250703/" class="btn-square text-white me-2"><i class="fab fa-pinterest"></i></a>
-                                <a href="https://www.facebook.com/Phuc250703/" class="btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <nav class="navbar navbar-light bg-light navbar-expand-xl">
-                    <a href="index.jsp" class="navbar-brand ms-3">
-                        <h1 class="text-primary display-5">Outdoor-Life</h1>
-                    </a>
-                    <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="fa fa-bars text-primary"></span>
-                    </button>
-                    <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
-                        <div class="navbar-nav ms-auto">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="service.html" class="nav-item nav-link">Services</a>
-                            <a href="campsite.html" class="nav-item nav-link">campsite</a>
-                            <a href="campinggear.html" class="nav-item nav-link">camping gear</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        </div>
-                        <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                            <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <!-- Navbar End -->
-
-        
+<jsp:include page="header.jsp"></jsp:include>
+<div class="container">
        <!-- Carousel Start -->
         <div class="container-fluid carousel-header vh-100 px-0">
             <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
@@ -251,7 +198,7 @@
                         <div class="service-item">
                             <img src="img/diahinh1.jpg" class="img-fluid w-100" alt="Image">
                             <div class="service-link">
-                                <a href="https://www.facebook.com/Phuc250703/   " class="h4 mb-0">River</a>
+                                <a href="form1.jsp" class="h4 mb-0">River</a>
                             </div>
                         </div>
                         <p class="my-4">Campsites around the river. Make you have more and more the experience with your friends or family. Cool river bring you good relax
@@ -261,7 +208,7 @@
                         <div class="service-item">
                             <img src="img/diahinh2.jpg" class="img-fluid w-100" alt="Image">
                             <div class="service-link">
-                                <a href="#" class="h4 mb-0"> Beach</a>
+                                <a href="form2.jsp" class="h4 mb-0">Mountain</a>
                             </div>
                         </div>
                         <p class="my-4">A place where you can immerse yourself in the sea water. There are rich seafood and interesting entertainment services such as boating and beach volleyball
@@ -271,7 +218,7 @@
                         <div class="service-item">
                             <img src="img/diahinh3.jpg" class="img-fluid w-100" alt="Image">
                             <div class="service-link">
-                                <a href="#" class="h4 mb-0">Mountain</a>
+                                <a href="form3.jsp" class="h4 mb-0">Beach</a>
                             </div>
                         </div>
                         <p class="my-4">You can enjoy the atmosphere away from the city at an altitude of a few hundred meters. You can grill meat or organize parties among the mountains without worrying about being disturbed
@@ -285,7 +232,6 @@
         <!-- Services End -->
 
 
-        <!-- Donation Start -->
         <div class="container-fluid donation py-5">
             <div class="container py-5">
                 <div class="text-center mx-auto pb-5" style="max-width: 800px;">
@@ -295,38 +241,31 @@
                 <div class="row g-6">
                     <div class="col-lg-6">
                         <div class="donation-item">
-                            <img src="img/leu1.jpg" class="img-fluid w-100" alt="Image">
+                            <img src="img/leu1_1.jpg" class="img-fluid w-100" alt="Image">
                             <div class="donation-content d-flex flex-column">
                                 <h5 class="text-uppercase text-primary mb-4">Tent</h5>
-                                <p class="text-white mb-4">use the tent for sleep or to do a storage if you want</p>
+                                <p class="text-white mb-4">Use the tent for sleep or to do a storage if you want</p>
                                 <div class="donation-btn d-flex align-items-center justify-content-start">
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">View</a>
+                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="/Login/gearcontroller?action=viewtent">View Tents</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="donation-item">
-                            <img src="img/leu2.jpg" class="img-fluid w-100" alt="Image">
+                            <img src="img/gearalll.jpg" class="img-fluid w-100" alt="Image">
                             <div class="donation-content d-flex flex-column">
                                 <h5 class="text-uppercase text-primary mb-4">Gear</h5>
                                 <p class="text-white mb-4">Gear can help you to easy have the camping day</p>
                                 <div class="donation-btn d-flex align-items-center justify-content-start">
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">View</a>
+                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="/Login/gearcontroller?action=viewgear">View Gears</a>
                                 </div>  
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-12">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">View all camping gear</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Donation End -->
 
         <!-- Blog Start -->
         <div class="container-fluid blog py-5 mb-5">
@@ -454,9 +393,9 @@
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
-
+</div>
         
-        <!-- JavaScript Libraries -->
+<!--         JavaScript Libraries 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="lib/easing/easing.min.js"></script>
@@ -466,9 +405,9 @@
         <script src="lib/lightbox/js/lightbox.min.js"></script>
         
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+         Template Javascript 
+        <script src="js/main.js"></script>-->
 
     </body>
 
-</html>
+<!--</html>-->

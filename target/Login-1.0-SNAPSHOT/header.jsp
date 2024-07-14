@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +23,7 @@
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-
+<link href="addtocart.css" rel="stylesheet">
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -38,7 +38,7 @@
             <div class="spinner-grow text-primary" role="status"></div>
         </div>
         <!-- Spinner End -->
-          <!-- Navbar start -->
+        <!-- Navbar start -->
         <div class="container-fluid fixed-top px-0">
             <div class="container px-0">
                 <div class="topbar">
@@ -70,25 +70,75 @@
                     <div class="collapse navbar-collapse bg-light" id="navbarCollapse">
                         <div class="navbar-nav ms-auto">
                             <a href="index.jsp" class="nav-item nav-link active">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="service.html" class="nav-item nav-link">Services</a>
-                            <a href="campsite.html" class="nav-item nav-link">Campsite</a>
-                            <a href="campinggear.html" class="nav-item nav-link">Camping gear</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+<!--                            <a href="about.jsp" class="nav-item nav-link">About</a>
+                            <a href="service.jsp" class="nav-item nav-link">Services</a>-->
+                            <a href="campsite.jsp" class="nav-item nav-link">Campsite</a>
+                            <a href="campinggear.jsp" class="nav-item nav-link">Camping gear</a>
+                              <c:if test = "${not empty currentUser }">
+                             <a href="orderscamp.jsp" class="nav-item nav-link">Order History</a>
+                              <a href="feedback.jsp" class="nav-item nav-link">Feedback</a>
+                             </c:if>
+                            <!--<a href="contact.jsp" class="nav-item nav-link">Contact</a>-->
+                             <li class="nav-item"><a class="nav-link" href="Cart.jsp">Cart <span class="badge-custom">${cart_list.size()}</span> </a></li>
                         </div>
-                        <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
-                            <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
-                        </div>
+
+                        <c:choose>
+                            <c:when test = "${not empty currentUser }">
+                                <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                                    <!-- Add dropdown menu for profile and logout -->
+                                    <div class="dropdown">
+                                        <button class="btn btn-light text-primary me-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-user-circle fa-2x"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" href="UserProfile.jsp">Profile</a></li>
+                                            <li><a class="dropdown-item" href="logout">Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </c:when>
+
+
+                            <c:otherwise>
+
+                                <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                                    <a href="login.jsp" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Login</a>
+                                </div>
+                            </c:otherwise>
+
+                        </c:choose>
                     </div>
                 </nav>
             </div>
         </div>
         <!-- Navbar End -->
 
+
+        <!-- modal start -->
+        <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderModalLabel">Choose Order Option</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Choose where you want to go:</p>
+                        <div class="d-grid gap-2">
+                            <a href="orders.jsp" class="btn btn-primary">Gear Order</a>
+                            <a href="orderscamp.jsp" class="btn btn-primary">Camp Order</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal End -->
+
+
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
-        
+
         <!-- JavaScript Libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -97,11 +147,19 @@
         <script src="lib/counterup/counterup.min.js"></script>
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
         <script src="lib/lightbox/js/lightbox.min.js"></script>
-        
+
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
 
     </body>
+    <script>
+                                function openOrderPopup() {
+                                    var modal = new bootstrap.Modal(document.getElementById('orderModal'), {
+                                        keyboard: false
+                                    });
+                                    modal.show();
+                                }
+    </script>
 
 </html>
