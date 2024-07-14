@@ -14,12 +14,12 @@ public class Campsite {
         
     }
 
-    public Campsite(int campId, int campPrice, String campAddress, String campName, String campDecription,String campImage, boolean campStatus) {
+    public Campsite(int campId, int campPrice, String campAddress, String campName, String campDescription,String campImage, boolean campStatus) {
         this.campId = campId;
         this.campPrice = campPrice;
         this.campAddress = campAddress;
         this.campName = campName;
-        this.campDescription = campDecription;
+        this.campDescription = campDescription;
         this.campImage= campImage;
         this.campStatus = campStatus;
     }
@@ -60,8 +60,8 @@ public class Campsite {
         return campDescription;
     }
 
-    public void setCampDescription(String campDecription) {
-        this.campDescription = campDecription;
+    public void setCampDescription(String campDescription) {
+        this.campDescription = campDescription;
     }
 
     public String getCampImage() {
