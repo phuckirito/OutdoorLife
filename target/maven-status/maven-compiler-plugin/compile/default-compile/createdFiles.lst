@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 controller\DashboardServlet.class
 model\ReplyFeedback.class
 controller\CommentServlet.class
@@ -67,6 +68,12 @@ controller\DeleteFeedbackServlet.class
 controller\UpdateCampsiteServlet.class
 model\Feedback.class
 dao\CommentDAO.class
+=======
+controller\RegisterAcc.class
+dao\userDaoImpl.class
+dao\userDao.class
+model\user.class
+>>>>>>> f5e25c81d575163c242b0248371bab8c4277341f
 dao\DBContext.class
 model\Order.class
 com\vnpay\common\vnpayQuery.class

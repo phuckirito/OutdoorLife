@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 E:\FPTU\Ki5\SWP391\OutdoorLife (1) (1) (2)\src\main\java\controller\ProfileServlet.java
 E:\FPTU\Ki5\SWP391\OutdoorLife (1) (1) (2)\src\main\java\controller\SendOtpServlet.java
 E:\FPTU\Ki5\SWP391\OutdoorLife (1) (1) (2)\src\main\java\model\Discount.java
@@ -73,3 +74,10 @@ E:\FPTU\Ki5\SWP391\OutdoorLife (1) (1) (2)\src\main\java\controller\Admin.java
 E:\FPTU\Ki5\SWP391\OutdoorLife (1) (1) (2)\src\main\java\com\vnpay\common\vnpayRefund.java
 E:\FPTU\Ki5\SWP391\OutdoorLife (1) (1) (2)\src\main\java\controller\ReplyFeedbackServlet.java
 E:\FPTU\Ki5\SWP391\OutdoorLife (1) (1) (2)\src\main\java\controller\RegisterAccountServlet.java
+=======
+E:\FPTU\Ki_5\SWP391\OutdoorLife\src\main\java\dao\DBContext.java
+E:\FPTU\Ki_5\SWP391\OutdoorLife\src\main\java\dao\userDao.java
+E:\FPTU\Ki_5\SWP391\OutdoorLife\src\main\java\dao\userDaoImpl.java
+E:\FPTU\Ki_5\SWP391\OutdoorLife\src\main\java\model\user.java
+E:\FPTU\Ki_5\SWP391\OutdoorLife\src\main\java\controller\RegisterAcc.java
+>>>>>>> f5e25c81d575163c242b0248371bab8c4277341f
