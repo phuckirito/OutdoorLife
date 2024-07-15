@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="login.css"/>
@@ -15,7 +16,14 @@
                 <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
                     <form action="loginservlet" method="post" style="width: 23rem;">
-
+                        
+                        <!-- Hiển thị thông báo thành công -->
+                        <c:if test="${not empty successMessage}">
+                            <div class="alert alert-success">
+                                ${successMessage}
+                            </div>
+                        </c:if>
+                        
                         <h1 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; color: #007bff; font-size: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">SIGN IN</h1>
 
                         <c:if test="${not empty errorMessage}">
@@ -27,9 +35,7 @@
                             <label for="floatingEmail">Email address</label>
                         </div>
 
-
                         <div class="form-floating mb-3">
-                            <a href="login.jsp"></a>
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
                             <label for="floatingPassword">Password</label>
                         </div>
@@ -41,7 +47,6 @@
                         <p class="small mb-5 pb-lg-2"><a class="text-muted" href="forgotpass.jsp">Forgot password?</a></p>
                         <p>Don't have an account? <a href="Register.jsp" class="link-info">Register here</a></p>
 
-
                     </form>
 
                 </div>
@@ -50,9 +55,6 @@
                 <img src="img/camping.jpg"
                      alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
             </div>
-
-
-
         </div>
     </div>
 </section>

@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,21 +28,22 @@ public class VerifyCode extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("authcode");
         String code = request.getParameter("authcode");
 
         if (code.equals(user.getCode())) {
             UserDaoImpl guestDao = new UserDaoImpl();
-            boolean status = guestDao.insertGuest(user.getFirstName(), user.getLastName(), user.getEmail(),user.getPhoneNumber() , user.getPasswordHash());
+            boolean status = guestDao.insertGuest(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhoneNumber(), user.getPasswordHash());
             if (status) {
                 session.removeAttribute("authcode");
-                    request.setAttribute("successMessage", "Registration successful! You can now log in.");
+                session.setAttribute("successMessage", "Registration successful! You can now log in.");
+                response.sendRedirect("login.jsp"); // Chuyển hướng tới trang login.jsp
             } else {
                 request.setAttribute("errorMessage", "An error occurred during registration.");
+                request.getRequestDispatcher("verify.jsp").forward(request, response);
             }
-            request.getRequestDispatcher("Register.jsp").forward(request, response);
         } else {
             request.setAttribute("errorMessage", "Incorrect verification code.");
             request.getRequestDispatcher("verify.jsp").forward(request, response);
